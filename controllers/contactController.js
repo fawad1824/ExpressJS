@@ -1,20 +1,26 @@
 
+const aysncHandler=require("express-async-handler");
 
-const getContact=(req,res)=>{
+const getContact=  aysncHandler(async (req,res)=>{
     res.status(200).json({message:"Get all contacts"})
-}
-const getSingleContact=(req,res)=>{
+});
+const getSingleContact=aysncHandler(async (req,res)=>{
     res.status(200).json({message:`Get single contacts ${req.params.id}`})
-}
-const AddContact=(req,res)=>{
+});
+const AddContact=aysncHandler(async(req,res)=>{
+    const {name,email,phone}= req.body;
+    if(!name||!email||!phone){
+        res.status(400);
+        throw new Error("All field are mandatory");
+    }
     res.status(200).json({message:"Create contacts"})
-}
-const UpdateContact=(req,res)=>{
+});
+const UpdateContact=aysncHandler(async(req,res)=>{
     res.status(200).json({message:"Updated contacts"})
-}
-const DeleteContact=(req,res)=>{
+});
+const DeleteContact=aysncHandler(async(req,res)=>{
     res.status(200).json({message:"Deleted contacts"})
-}
+});
 
 module.exports={
     getContact,

@@ -4,20 +4,11 @@ const {getContact,getSingleContact,AddContact,UpdateContact,DeleteContact}= requ
 
 
 // Get
-router.route("/").get(getContact);
+router.route("/").get(getContact).post(AddContact);
 
 // Get by ID
-router.route("/:id").get(getSingleContact);
-
-// post
-router.route("/").post(AddContact);
-
-// updated
-router.route("/:id").put(UpdateContact);
-
-// delete
-router.route("/:id").delete(DeleteContact);
+router.route("/:id").get(getSingleContact).put(UpdateContact).delete(DeleteContact);
 
 module.exports = router;
 
-// 19/08
+// 34:15
